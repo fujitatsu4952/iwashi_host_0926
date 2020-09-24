@@ -1,0 +1,7 @@
+type PlanStatus {
+  planID: ID!
+  Time: String!
+  soldNum: Int
+  availableNum: Int
+  isAvailabe: Boolean
+}

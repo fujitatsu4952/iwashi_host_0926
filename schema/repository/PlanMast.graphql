@@ -1,0 +1,20 @@
+type PlanMast {
+  planID: ID!
+  name: String!
+  description: String!
+  subDescription: String!
+  price: Int!
+  stockNum: Int!
+  deletedAt: String
+  inSale: String
+}
+input PlanMastInput {
+  planID: ID!
+  name: String!
+  description: String!
+  subDescription: String!
+  price: Int!
+  stockNum: Int!
+  deletedAt: String
+  inSale: String
+}

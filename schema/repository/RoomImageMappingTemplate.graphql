@@ -1,0 +1,4 @@
+type RoomImageMappingTemplate {
+  roomID: String!
+  imageID: String
+}

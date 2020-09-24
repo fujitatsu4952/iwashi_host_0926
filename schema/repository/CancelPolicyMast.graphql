@@ -1,0 +1,5 @@
+type CancelPolicyMast {
+  policyID: ID!
+  beforeTime: String
+  chargeRatio: Int
+}

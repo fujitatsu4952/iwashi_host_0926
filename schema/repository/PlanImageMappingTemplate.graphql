@@ -1,0 +1,4 @@
+type PlanImageMappingTemplate {
+  planID: String!
+  imageID: String
+}
