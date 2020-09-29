@@ -28,7 +28,7 @@ import Methods from "@/methods/planMethods";
 @Component({
     components: {},
 })
-export default class PlanTable extends Vue {
+export default class PlanCreate extends Vue {
     public planMast: PlanMast | null = null;
     public created() {
         this.planMast = {

@@ -14,8 +14,8 @@ export default {
   },
 
   // 他の処理も追加可能
-  async fetchPolicyMasts(policyID: string | null | undefined) {
+  async fetchPolicyMast(policyID: string | null | undefined) {
     const res = await sdk.fetchPolicyMast({ policyID });
-    return res.data?.fetchPolicyMast;
+    return res.data?.fetchPolicyMast[0];
   }
 };

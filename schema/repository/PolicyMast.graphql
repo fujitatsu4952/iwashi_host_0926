@@ -1,9 +1,9 @@
 type PolicyMast {
   policyID: ID!
-  roomChargePrice: String
+  roomChargePrice: Int
 }
 
 input PolicyMastInput {
   policyID: ID!
-  roomChargePrice: String
+  roomChargePrice: Int
 }

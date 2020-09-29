@@ -3,6 +3,8 @@
         <div>
             <h1 class="title">iwashi200915</h1>
             <button @click="goPlan">プラン作成</button>
+            <button @click="goRoom">ルーム作成</button>
+            <button @click="goPolicy">ポリシー作成</button>
         </div>
     </div>
 </template>
@@ -16,6 +18,12 @@ import { Component, Vue, Watch } from "nuxt-property-decorator";
 export default class BookingPage extends Vue {
     public goPlan() {
         this.$router.push({ name: "items-plan" });
+    }
+    public goRoom() {
+        this.$router.push({ name: "items-room" });
+    }
+    public goPolicy() {
+        this.$router.push({ name: "items-policy" });
     }
 }
 </script>

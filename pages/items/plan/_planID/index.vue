@@ -9,9 +9,13 @@
             <div>注意事項</div>
             <input v-model="planMast.subDescription" />
             <div>金額</div>
-            <input v-model="planMast.price" />
+            <input
+                type="number"
+                name="number"
+                v-model.number="planMast.price"
+            />
             <div>ストック数</div>
-            <input v-model="planMast.stockNum" />
+            <input v-model.number="planMast.stockNum" />
 
             <button @click="updatePlan">更新</button>
             {{ planMast }}

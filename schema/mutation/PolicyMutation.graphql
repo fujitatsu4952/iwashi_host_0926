@@ -1,5 +1,5 @@
 type Query {
-  fetchPolicyMast(policyID: ID): PolicyMast!
+  fetchPolicyMast(policyID: ID): [PolicyMast!]!
 }
 
 type Mutation {

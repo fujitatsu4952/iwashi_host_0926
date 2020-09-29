@@ -1,12 +1,12 @@
 <template>
     <div>
         <h1>ルーム一覧</h1>
-        <button @click="addPlan">ルーム作成へ</button>
+        <button @click="addRoom">ルーム作成へ</button>
 
-        <template v-if="planMasts">
-            <!-- {{ planMasts }} -->
-            <div v-for="planMast in planMasts" :key="planMast.planID">
-                <plan-item :planMast="planMast" />
+        <template v-if="roomMasts">
+            <!-- {{ roomMasts }} -->
+            <div v-for="roomMast in roomMasts" :key="roomMast.roomID">
+                <room-item :roomMast="roomMast" />
             </div>
         </template>
     </div>
@@ -14,22 +14,22 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
-import { PlanMast } from "@/entity/type";
+import { RoomMast } from "@/entity/type";
 import { getUniqueID } from "@/Util/generateUuid";
-import Methods from "@/methods/planMethods";
+import Methods from "@/methods/roomMethods";
 
-import PlanItem from "@/components/Organisms/Plan/planItem.vue";
+import RoomItem from "@/components/Organisms/Room/roomItem.vue";
 
 @Component({
-    components: { PlanItem },
+    components: { RoomItem },
 })
-export default class PlanTable extends Vue {
-    public planMasts: PlanMast[] | null | undefined = null;
-    public async addPlan() {
-        this.$router.push({ name: "items-plan-new_plan" });
+export default class RoomTable extends Vue {
+    public roomMasts: RoomMast[] | null | undefined = null;
+    public async addRoom() {
+        this.$router.push({ name: "items-room-new_room" });
     }
     public async created() {
-        this.planMasts = await Methods.fetchPlanMasts(undefined);
+        this.roomMasts = await Methods.fetchRoomMasts(undefined);
     }
 }
 </script>

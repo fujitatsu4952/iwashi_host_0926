@@ -11,7 +11,7 @@ export type Scalars = {
 
 export type Query = {
   fetchPlanMasts: Array<PlanMast>;
-  fetchPolicyMast: PolicyMast;
+  fetchPolicyMast: Array<PolicyMast>;
   fetchRoomMasts: Array<RoomMast>;
 };
 
@@ -147,12 +147,12 @@ export type PlanStatusInput = {
 
 export type PolicyMast = {
   policyID: Scalars['ID'];
-  roomChargePrice?: Maybe<Scalars['String']>;
+  roomChargePrice?: Maybe<Scalars['Int']>;
 };
 
 export type PolicyMastInput = {
   policyID: Scalars['ID'];
-  roomChargePrice?: Maybe<Scalars['String']>;
+  roomChargePrice?: Maybe<Scalars['Int']>;
 };
 
 export type ReservationObject = {
