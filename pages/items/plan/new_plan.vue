@@ -16,7 +16,6 @@
             <input v-model="planMast.stockNum" />
         </div>
         <button @click="addPlan">送信</button>
-        {{ planMast }}
     </div>
 </template>
 
@@ -24,7 +23,7 @@
 import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
 import { PlanMast } from "@/entity/type";
 import { getUniqueID } from "@/Util/generateUuid";
-import Methods from "@/api/methods";
+import Methods from "@/methods/planMethods";
 
 @Component({
     components: {},
@@ -45,6 +44,7 @@ export default class PlanTable extends Vue {
     }
     public async addPlan() {
         let response = await Methods.addPlan(this.planMast);
+        console.log(response);
     }
 }
 </script>

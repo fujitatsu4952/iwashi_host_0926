@@ -6,15 +6,16 @@ type PlanMast {
   price: Int!
   stockNum: Int!
   deletedAt: String
-  inSale: String
+  inSale: Boolean
 }
+
 input PlanMastInput {
   planID: ID!
   name: String!
   description: String!
-  subDescription: String!
+  subDescription: String
   price: Int!
   stockNum: Int!
   deletedAt: String
-  inSale: String
+  inSale: Boolean
 }

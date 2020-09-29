@@ -5,3 +5,11 @@ type ImageMast {
   mimeType: String
   fileName: String
 }
+
+input ImageMastInput {
+  imageID: ID!
+  bucket: String!
+  key: String!
+  mimeType: String
+  fileName: String
+}

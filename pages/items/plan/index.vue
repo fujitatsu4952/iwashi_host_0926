@@ -16,23 +16,20 @@
 import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
 import { PlanMast } from "@/entity/type";
 import { getUniqueID } from "@/Util/generateUuid";
-import Methods from "@/api/methods";
+import Methods from "@/methods/planMethods";
 
-import PlanItem from "@/Organisms/Plan/planItem.vue";
+import PlanItem from "@/components/Organisms/Plan/planItem.vue";
 
 @Component({
     components: { PlanItem },
 })
 export default class PlanTable extends Vue {
-    public planMasts: PlanMast[] | null = null;
+    public planMasts: PlanMast[] | null | undefined = null;
     public async addPlan() {
         this.$router.push({ name: "items-plan-new_plan" });
     }
     public async created() {
-        console.log(await Methods.fetchPlanMasts());
-        this.planMasts = (
-            await Methods.fetchPlanMasts()
-        ).data.data.allPlanMasts;
+        this.planMasts = await Methods.fetchPlanMasts(undefined);
     }
 }
 </script>

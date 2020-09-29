@@ -5,3 +5,11 @@ type PlanStatus {
   availableNum: Int
   isAvailabe: Boolean
 }
+
+input PlanStatusInput {
+  planID: ID!
+  Time: String!
+  soldNum: Int
+  availableNum: Int
+  isAvailabe: Boolean
+}

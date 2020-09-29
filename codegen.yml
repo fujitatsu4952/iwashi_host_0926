@@ -1,24 +1,24 @@
 overwrite: true
 schema: "./schema/**/*.graphql"
-documents: null
+documents: "./schema/mutation/*.graphql"
 config:
   namingConvention: keep
-  scalars:
-    AWSDate: string
-    AWSDateTime: string
-    AWSTimestamp: number
-    AWSTime: string
-    AWSEmail: string
-    AWSJSON: string
-    AWSURL: string
-    AWSPhone: string
-    AWSIPAddress: string
+
 generates:
   ./entity/type.ts:
+    documents: null
     plugins:
       - "typescript"
     config:
       skipTypename: true
   dist/schema.graphql:
+    documents: null
     plugins:
       - "schema-ast"
+  ./api/mutation.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-graphql-request
+    config:
+      rawRequest: true

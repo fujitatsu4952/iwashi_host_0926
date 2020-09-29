@@ -5,3 +5,11 @@ type ReservationRoomInfo {
   amount: String!
   price: String!
 }
+
+input ReservationRoomInfoInput {
+  reservationID: String!
+  roomID: String!
+  name: String!
+  amount: String!
+  price: String!
+}

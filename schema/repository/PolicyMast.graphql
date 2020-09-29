@@ -2,3 +2,8 @@ type PolicyMast {
   policyID: ID!
   roomChargePrice: String
 }
+
+input PolicyMastInput {
+  policyID: ID!
+  roomChargePrice: String
+}
