@@ -15,7 +15,14 @@ mutation updatePlanMast($planMast: PlanMastInput) {
 
 mutation addPlanMast($planMast: PlanMastInput) {
   addPlanMast(input: $planMast) {
+    planID
     name
+    description
+    subDescription
+    price
+    stockNum
+    deletedAt
+    inSale
   }
 }
 

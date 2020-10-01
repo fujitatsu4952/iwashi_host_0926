@@ -11,9 +11,9 @@
             <div>注意事項</div>
             <input v-model="planMast.subDescription" />
             <div>金額</div>
-            <input v-model="planMast.price" />
+            <input v-model.number="planMast.price" />
             <div>ストック数</div>
-            <input v-model="planMast.stockNum" />
+            <input v-model.number="planMast.stockNum" />
         </div>
         <button @click="addPlan">送信</button>
     </div>

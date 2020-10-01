@@ -10,7 +10,8 @@ export default {
   },
 
   async addPlan(planMast: PlanMast | null) {
-    await sdk.addPlanMast({ planMast });
+    const res = await sdk.addPlanMast({ planMast });
+    console.log(res.data);
   },
 
   // 他の処理も追加可能

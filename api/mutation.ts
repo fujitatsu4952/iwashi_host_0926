@@ -307,7 +307,7 @@ export type addPlanMastMutation = (
   { __typename?: 'Mutation' }
   & { addPlanMast?: Maybe<(
     { __typename?: 'PlanMast' }
-    & Pick<PlanMast, 'name'>
+    & Pick<PlanMast, 'planID' | 'name' | 'description' | 'subDescription' | 'price' | 'stockNum' | 'deletedAt' | 'inSale'>
   )> }
 );
 
@@ -413,7 +413,14 @@ export const updatePlanMastDocument = gql`
 export const addPlanMastDocument = gql`
     mutation addPlanMast($planMast: PlanMastInput) {
   addPlanMast(input: $planMast) {
+    planID
     name
+    description
+    subDescription
+    price
+    stockNum
+    deletedAt
+    inSale
   }
 }
     `;
