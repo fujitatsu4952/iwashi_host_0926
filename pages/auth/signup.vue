@@ -1,13 +1,13 @@
 <template>
     <div class="container">
         <div>
-            <h1 class="title">iwashi200915</h1>
-            <button @click="goPlan">プラン作成</button>
-            <button @click="goRoom">ルーム作成</button>
-            <button @click="goPolicy">ポリシー作成</button>
-            <div>
-                <button @click="signOut">サインアウトする</button>
-            </div>
+            <h1 class="title">サインアップ</h1>
+
+            <p>メールアドレスは？</p>
+            <input type="text" v-model="newEmail" />
+            <p>パスワードは？</p>
+            <input type="text" v-model="newPassword" />
+            <button @click="signUp">登録！</button>
         </div>
     </div>
 </template>
@@ -15,7 +15,6 @@
 <script lang="ts">
 import { Component, Vue, Watch } from "nuxt-property-decorator";
 import { hostUserAuthInteractor } from "@/client/amplify/auth";
-import { Auth } from "@/client/abr/decorator/authDecorator";
 
 @Component({
     components: {},
@@ -24,18 +23,18 @@ export default class BookingPage extends Vue {
     public newEmail: string = "";
     public newPassword: string = "";
 
-    @Auth
-    public async created() {
-        const user = await hostUserAuthInteractor.isSignIn();
-        console.log(user);
-        console.log("これは正常に作動しているのだろうか？");
-    }
-
-    public async signOut(): Promise<void> {
+    public async signUp(): Promise<void> {
         try {
-            await hostUserAuthInteractor.signOut();
+            await hostUserAuthInteractor.signUp(
+                this.newEmail,
+                this.newPassword
+            );
         } catch (err) {
             console.log(err);
+            if ((err.code = "UsernameExistsException")) {
+                console.log(this.newEmail);
+                await hostUserAuthInteractor.signUpResend(this.newEmail);
+            }
         }
     }
 

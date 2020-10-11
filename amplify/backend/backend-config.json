@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "iwashi20100653c568f153c568f1": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
