@@ -38,18 +38,18 @@ export default class SignIn extends Vue {
 </script>
 <style lang="stylus" scoped>
 .contents-container {
-    padding: $padding_auth_container;
     display: inline-block;
-    min-width: $min_width_auth_contents;
+    // padding: $padding_auth_container;
+    // min-width: $min_width_auth_contents;
 
     .logo-container {
-        margin: $margin_logo_container;
+        // margin: $margin_logo_container;
     }
 
     .auth-contents-container {
-        background-color: $backgournd_color__auth_contents_container;
-        padding: $padding_auth_contents_container;
-        border-radius: $border_radius_auth_contents_container;
+        // background-color: $backgournd_color__auth_contents_container;
+        // padding: $padding_auth_contents_container;
+        // border-radius: $border_radius_auth_contents_container;
 
         .auth-contents-link-container {
             text-align: right;

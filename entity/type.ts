@@ -266,3 +266,19 @@ export type RoomStatusInput = {
   availableNum?: Maybe<Scalars['Int']>;
   isAvailabe?: Maybe<Scalars['Boolean']>;
 };
+
+export type S3Object = {
+  bucket?: Maybe<Scalars['String']>;
+  key: Scalars['String'];
+  region: Scalars['String'];
+  mimeType?: Maybe<Scalars['String']>;
+  fileName?: Maybe<Scalars['String']>;
+};
+
+export type S3ObjectInput = {
+  bucket?: Maybe<Scalars['String']>;
+  key: Scalars['String'];
+  region: Scalars['String'];
+  mimeType?: Maybe<Scalars['String']>;
+  fileName?: Maybe<Scalars['String']>;
+};

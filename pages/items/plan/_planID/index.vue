@@ -1,25 +1,6 @@
 <template>
-    <div class="container">
-        <h1>プラン更新</h1>
-        <div v-if="planMast">
-            <div>ネーム</div>
-            <input v-model="planMast.name" />
-            <div>説明</div>
-            <input v-model="planMast.description" />
-            <div>注意事項</div>
-            <input v-model="planMast.subDescription" />
-            <div>金額</div>
-            <input
-                type="number"
-                name="number"
-                v-model.number="planMast.price"
-            />
-            <div>ストック数</div>
-            <input v-model.number="planMast.stockNum" />
-
-            <button @click="updatePlan">更新</button>
-            {{ planMast }}
-        </div>
+    <div v-if="planMast">
+        <plan-edit v-model="planMast" @update="updatePlan" />
     </div>
 </template>
 
@@ -29,8 +10,14 @@ import { PlanMast, Scalars } from "@/entity/type";
 import { getUniqueID } from "@/Util/generateUuid";
 import Methods from "@/methods/planMethods";
 
+//components
+import PlanEdit from "@/components/Template/Plan/edit.vue";
+
 @Component({
-    components: {},
+    layout: "hotelDefault",
+    components: {
+        PlanEdit
+    }
 })
 export default class PlanTable extends Vue {
     public planMast: PlanMast | null = null;
@@ -40,6 +27,7 @@ export default class PlanTable extends Vue {
     }
     public async updatePlan() {
         let response = await Methods.updatePlan(this.planMast);
+        this.$router.push({ name: "items-plan" });
     }
 }
 </script>

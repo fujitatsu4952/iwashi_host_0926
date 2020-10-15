@@ -40,6 +40,6 @@ export default class AppTextH4 extends Vue {
 }
 
 .pink {
-    color: $primary;
+    // color: $primary;
 }
 </style>

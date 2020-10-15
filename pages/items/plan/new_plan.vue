@@ -1,21 +1,6 @@
 <template>
-    <div class="container">
-        <h1>プラン作成</h1>
-        <div>
-            <div>プランID</div>
-            <input v-model="planMast.planID" />
-            <div>ネーム</div>
-            <input v-model="planMast.name" />
-            <div>説明</div>
-            <input v-model="planMast.description" />
-            <div>注意事項</div>
-            <input v-model="planMast.subDescription" />
-            <div>金額</div>
-            <input v-model.number="planMast.price" />
-            <div>ストック数</div>
-            <input v-model.number="planMast.stockNum" />
-        </div>
-        <button @click="addPlan">送信</button>
+    <div>
+        <plan-edit v-model="planMast" @updatePlan="addPlan" />
     </div>
 </template>
 
@@ -24,9 +9,12 @@ import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
 import { PlanMast } from "@/entity/type";
 import { getUniqueID } from "@/Util/generateUuid";
 import Methods from "@/methods/planMethods";
+//components
+import PlanEdit from "@/components/Template/Plan/edit.vue";
 
 @Component({
-    components: {},
+    layout: "hotelDefault",
+    components: { PlanEdit }
 })
 export default class PlanCreate extends Vue {
     public planMast: PlanMast | null = null;
@@ -39,14 +27,14 @@ export default class PlanCreate extends Vue {
             price: 0,
             stockNum: 0,
             deletedAt: null,
-            inSale: null,
+            inSale: null
         };
     }
     public async addPlan() {
         let response = await Methods.addPlan(this.planMast);
-        console.log(response);
+        this.$router.push({ name: "items-plan" });
     }
 }
 </script>
 
-<style></style>
+<style lang="stylus" scoped></style>

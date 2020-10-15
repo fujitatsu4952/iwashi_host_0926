@@ -1,4 +1,6 @@
 {
+    "identityPoolName": "iwashi20100653c568f153c568f1_identitypool_9d3449da",
+    "allowUnauthenticatedIdentities": false,
     "resourceNameTruncated": "iwashi53c568f1",
     "userPoolName": "iwashi20100653c568f1_userpool_53c568f1",
     "autoVerifiedAttributes": [
@@ -30,7 +32,7 @@
     "userpoolClientSetAttributes": false,
     "sharedId": "53c568f1",
     "resourceName": "iwashi20100653c568f153c568f1",
-    "authSelections": "userPoolOnly",
+    "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
             "AuthRole",

@@ -16,7 +16,7 @@ class HostUserAuthInteractor {
     }
   }
   public async getSignInfo(): Promise<any> {
-    await Auth.currentAuthenticatedUser({
+    return Auth.currentAuthenticatedUser({
       bypassCache: false
     });
   }

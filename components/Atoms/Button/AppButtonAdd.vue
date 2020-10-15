@@ -23,7 +23,7 @@ export default class AppAddnButton extends Vue {
 
 <style lang="stylus" scoped>
 .app-add-button {
-    @extend $button_primary_base;
+    // @extend $button_primary_base;
     height: 40px;
     min-width: 100px;
 

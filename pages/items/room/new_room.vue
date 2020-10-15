@@ -1,21 +1,6 @@
 <template>
-    <div class="container">
-        <h1>ルーム作成</h1>
-        <div>
-            <div>ルームID</div>
-            <input v-model="roomMast.roomID" />
-            <div>ネーム</div>
-            <input v-model="roomMast.name" />
-            <div>説明</div>
-            <input v-model="roomMast.description" />
-            <div>注意事項</div>
-            <input v-model="roomMast.subDescription" />
-            <div>収容可能人数</div>
-            <input v-model="roomMast.maxPeopleNum" />
-            <div>ストック数</div>
-            <input v-model="roomMast.stockNum" />
-        </div>
-        <button @click="addRoom">作成</button>
+    <div>
+        <room-edit v-model="roomMast" @updateRoom="addRoom" />
     </div>
 </template>
 
@@ -24,9 +9,12 @@ import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
 import { RoomMast } from "@/entity/type";
 import { getUniqueID } from "@/Util/generateUuid";
 import Methods from "@/methods/roomMethods";
+//components
+import RoomEdit from "@/components/Template/Room/edit.vue";
 
 @Component({
-    components: {},
+    layout: "hotelDefault",
+    components: { RoomEdit }
 })
 export default class RoomCreate extends Vue {
     public roomMast: RoomMast | null = null;
@@ -40,12 +28,12 @@ export default class RoomCreate extends Vue {
             minOrderNum: 0,
             stockNum: 0,
             deletedAt: null,
-            inSale: null,
+            inSale: null
         };
     }
     public async addRoom() {
         let response = await Methods.addRoom(this.roomMast);
-        console.log(response);
+        this.$router.push({ name: "items-room" });
     }
 }
 </script>

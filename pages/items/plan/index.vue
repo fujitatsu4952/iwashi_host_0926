@@ -1,13 +1,8 @@
 <template>
     <div>
-        <h1>プラン一覧</h1>
-        <button @click="addPlan">プラン作成へ</button>
-
+        <app-button @click="addPlan">プラン作成へ</app-button>
         <template v-if="planMasts">
-            <!-- {{ planMasts }} -->
-            <div v-for="planMast in planMasts" :key="planMast.planID">
-                <plan-item :planMast="planMast" />
-            </div>
+            <plan-list :planMasts="planMasts" />
         </template>
     </div>
 </template>
@@ -17,13 +12,15 @@ import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
 import { PlanMast } from "@/entity/type";
 import { getUniqueID } from "@/Util/generateUuid";
 import Methods from "@/methods/planMethods";
-
-import PlanItem from "@/components/Organisms/Plan/planItem.vue";
+// components
+import PlanList from "@/components/Template/Plan/list.vue";
+import AppButton from "@/components/Atoms/Button/AppButtonSave.vue";
 
 @Component({
-    components: { PlanItem },
+    layout: "hotelDefault",
+    components: { PlanList, AppButton }
 })
-export default class PlanTable extends Vue {
+export default class PagePlanTable extends Vue {
     public planMasts: PlanMast[] | null | undefined = null;
     public async addPlan() {
         this.$router.push({ name: "items-plan-new_plan" });

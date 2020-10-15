@@ -70,12 +70,12 @@ export default class forgotPassword extends Vue {
 <style lang="stylus" scoped>
 .sign-form-container {
     .sign-input-container {
-        margin: $margin_sign_input_container;
+        // margin: $margin_sign_input_container;
     }
 
     .sign-button-container {
         .sign-button {
-            width: $percent_width_sign_button_container;
+            // width: $percent_width_sign_button_container;
         }
     }
 }

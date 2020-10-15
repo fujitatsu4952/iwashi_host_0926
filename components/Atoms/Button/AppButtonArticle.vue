@@ -48,7 +48,7 @@ export default class AppButton extends Vue {
 
 <style lang="stylus" scoped>
 .app-button {
-    @extend $button_secondary_base;
+    // @extend $button_secondary_base;
     width: 200px;
     height: 200px;
 

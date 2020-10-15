@@ -17,7 +17,8 @@ import Methods from "@/methods/policyMethods";
 import PolicyItem from "@/components/Organisms/Policy/policyItem.vue";
 
 @Component({
-    components: { PolicyItem },
+    layout: "hotelDefault",
+    components: { PolicyItem }
 })
 export default class PolicyTable extends Vue {
     public policyMast: PolicyMast | null | undefined = null;

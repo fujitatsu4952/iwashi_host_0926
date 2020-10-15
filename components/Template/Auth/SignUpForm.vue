@@ -108,7 +108,7 @@ export default class SignUpForm extends Vue {
 <style lang="stylus" scoped>
 .sign-form-container {
     .sign-input-container {
-        margin: $margin_sign_input_container;
+        // margin: $margin_sign_input_container;
 
         .company-policy {
             margin-top: 40px;
@@ -128,7 +128,7 @@ export default class SignUpForm extends Vue {
 
     .sign-button-container {
         .sign-button {
-            width: $percent_width_sign_button_container;
+            // width: $percent_width_sign_button_container;
         }
     }
 }

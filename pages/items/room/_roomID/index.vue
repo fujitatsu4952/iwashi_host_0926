@@ -1,23 +1,6 @@
 <template>
-    <div class="container">
-        <h1>ルーム更新</h1>
-        <div v-if="roomMast">
-            <div>ネーム</div>
-            <input v-model="roomMast.name" />
-            <div>説明</div>
-            <input v-model="roomMast.description" />
-            <div>注意事項</div>
-            <input v-model="roomMast.subDescription" />
-            <div>定員</div>
-            <input v-model="roomMast.maxPeopleNum" />
-            <div>最低必要注文数</div>
-            <input v-model="roomMast.minOrderNum" />
-            <div>ストック数</div>
-            <input v-model="roomMast.stockNum" />
-
-            <button @click="updateRoom">更新</button>
-            {{ roomMast }}
-        </div>
+    <div>
+        <room-edit v-model="roomMast" @updateRoom="addRoom" />
     </div>
 </template>
 
@@ -26,9 +9,11 @@ import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
 import { RoomMast, Scalars } from "@/entity/type";
 import { getUniqueID } from "@/Util/generateUuid";
 import Methods from "@/methods/roomMethods";
+//components
+import RoomEdit from "@/components/Template/Room/edit.vue";
 
 @Component({
-    components: {},
+    components: { RoomEdit }
 })
 export default class RoomTableItem extends Vue {
     public roomMast: RoomMast | null = null;
@@ -38,6 +23,7 @@ export default class RoomTableItem extends Vue {
     }
     public async updateRoom() {
         let response = await Methods.updateRoom(this.roomMast);
+        this.$router.push({ name: "items-room" });
     }
 }
 </script>
