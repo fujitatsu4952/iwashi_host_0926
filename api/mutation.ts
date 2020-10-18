@@ -18,6 +18,7 @@ export type Query = {
   fetchPlanMasts: Array<PlanMast>;
   fetchPolicyMast: Array<PolicyMast>;
   fetchRoomMasts: Array<RoomMast>;
+  fetchS3Objects: Array<S3Object>;
 };
 
 
@@ -35,14 +36,21 @@ export type QueryfetchRoomMastsArgs = {
   roomID?: Maybe<Scalars['ID']>;
 };
 
+
+export type QueryfetchS3ObjectsArgs = {
+  keyName?: Maybe<Scalars['String']>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   addPlanMast?: Maybe<PlanMast>;
   addPolicyMast?: Maybe<PolicyMast>;
   addRoomMast?: Maybe<RoomMast>;
+  addS3Object?: Maybe<S3Object>;
   updatePlanMast?: Maybe<PlanMast>;
   updatePolicyMast?: Maybe<PolicyMast>;
   updateRoomMast?: Maybe<RoomMast>;
+  updateS3Object?: Maybe<S3Object>;
 };
 
 
@@ -61,6 +69,11 @@ export type MutationaddRoomMastArgs = {
 };
 
 
+export type MutationaddS3ObjectArgs = {
+  input?: Maybe<S3ObjectInput>;
+};
+
+
 export type MutationupdatePlanMastArgs = {
   input?: Maybe<PlanMastInput>;
 };
@@ -73,6 +86,11 @@ export type MutationupdatePolicyMastArgs = {
 
 export type MutationupdateRoomMastArgs = {
   input?: Maybe<RoomMastInput>;
+};
+
+
+export type MutationupdateS3ObjectArgs = {
+  input?: Maybe<S3ObjectInput>;
 };
 
 export type CancelPolicyMast = {
@@ -288,7 +306,7 @@ export type RoomStatusInput = {
 export type S3Object = {
   __typename?: 'S3Object';
   bucket?: Maybe<Scalars['String']>;
-  key: Scalars['String'];
+  keyName: Scalars['String'];
   region: Scalars['String'];
   mimeType?: Maybe<Scalars['String']>;
   fileName?: Maybe<Scalars['String']>;
@@ -296,7 +314,7 @@ export type S3Object = {
 
 export type S3ObjectInput = {
   bucket?: Maybe<Scalars['String']>;
-  key: Scalars['String'];
+  keyName: Scalars['String'];
   region: Scalars['String'];
   mimeType?: Maybe<Scalars['String']>;
   fileName?: Maybe<Scalars['String']>;
@@ -419,6 +437,45 @@ export type fetchRoomMastsQuery = (
   )> }
 );
 
+export type updateS3ObjectMutationVariables = Exact<{
+  s3Object?: Maybe<S3ObjectInput>;
+}>;
+
+
+export type updateS3ObjectMutation = (
+  { __typename?: 'Mutation' }
+  & { updateS3Object?: Maybe<(
+    { __typename?: 'S3Object' }
+    & Pick<S3Object, 'bucket'>
+  )> }
+);
+
+export type addS3ObjectMutationVariables = Exact<{
+  s3Object?: Maybe<S3ObjectInput>;
+}>;
+
+
+export type addS3ObjectMutation = (
+  { __typename?: 'Mutation' }
+  & { addS3Object?: Maybe<(
+    { __typename?: 'S3Object' }
+    & Pick<S3Object, 'bucket' | 'keyName' | 'region' | 'mimeType' | 'fileName'>
+  )> }
+);
+
+export type fetchS3ObjectsQueryVariables = Exact<{
+  keyName?: Maybe<Scalars['String']>;
+}>;
+
+
+export type fetchS3ObjectsQuery = (
+  { __typename?: 'Query' }
+  & { fetchS3Objects: Array<(
+    { __typename?: 'S3Object' }
+    & Pick<S3Object, 'bucket' | 'keyName' | 'region' | 'mimeType' | 'fileName'>
+  )> }
+);
+
 
 export const updatePlanMastDocument = gql`
     mutation updatePlanMast($planMast: PlanMastInput) {
@@ -506,6 +563,35 @@ export const fetchRoomMastsDocument = gql`
   }
 }
     `;
+export const updateS3ObjectDocument = gql`
+    mutation updateS3Object($s3Object: S3ObjectInput) {
+  updateS3Object(input: $s3Object) {
+    bucket
+  }
+}
+    `;
+export const addS3ObjectDocument = gql`
+    mutation addS3Object($s3Object: S3ObjectInput) {
+  addS3Object(input: $s3Object) {
+    bucket
+    keyName
+    region
+    mimeType
+    fileName
+  }
+}
+    `;
+export const fetchS3ObjectsDocument = gql`
+    query fetchS3Objects($keyName: String) {
+  fetchS3Objects(keyName: $keyName) {
+    bucket
+    keyName
+    region
+    mimeType
+    fileName
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: () => Promise<T>) => Promise<T>;
 
@@ -539,6 +625,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     fetchRoomMasts(variables?: fetchRoomMastsQueryVariables): Promise<{ data?: fetchRoomMastsQuery | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
         return withWrapper(() => client.rawRequest<fetchRoomMastsQuery>(print(fetchRoomMastsDocument), variables));
+    },
+    updateS3Object(variables?: updateS3ObjectMutationVariables): Promise<{ data?: updateS3ObjectMutation | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
+        return withWrapper(() => client.rawRequest<updateS3ObjectMutation>(print(updateS3ObjectDocument), variables));
+    },
+    addS3Object(variables?: addS3ObjectMutationVariables): Promise<{ data?: addS3ObjectMutation | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
+        return withWrapper(() => client.rawRequest<addS3ObjectMutation>(print(addS3ObjectDocument), variables));
+    },
+    fetchS3Objects(variables?: fetchS3ObjectsQueryVariables): Promise<{ data?: fetchS3ObjectsQuery | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
+        return withWrapper(() => client.rawRequest<fetchS3ObjectsQuery>(print(fetchS3ObjectsDocument), variables));
     }
   };
 }

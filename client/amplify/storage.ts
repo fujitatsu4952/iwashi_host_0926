@@ -3,10 +3,10 @@ import { S3Object } from "@/entity/type";
 import { awsmobile } from "~/plugins/amplify";
 
 class HostStorageInteractor {
-  public getS3ObjectByKey(key: string) {
+  public getS3ObjectByKey(keyName: string) {
     return {
       bucket: awsmobile.Storage.AWSS3.bucket,
-      key,
+      keyName,
       region: awsmobile.Storage.AWSS3.region
     };
   }
@@ -29,8 +29,10 @@ class HostStorageInteractor {
     // s3objectの返信
     return {
       bucket: awsmobile.Storage.AWSS3.bucket,
-      key: `public/${path}/${fileName}.${suffix}`,
-      region: awsmobile.Storage.AWSS3.region
+      keyName: `public/${path}/${fileName}.${suffix}`,
+      region: awsmobile.Storage.AWSS3.region,
+      mimeType: null,
+      fileName: null
     };
   }
 
@@ -38,10 +40,10 @@ class HostStorageInteractor {
     if (!s3Object) {
       return "";
     }
-    if (!s3Object.key) {
+    if (!s3Object.keyName) {
       return "";
     }
-    return `${awsmobile.Storage.AWSS3.baseUrl}${s3Object.key}`;
+    return `https://${s3Object.bucket}.s3-${s3Object.region}.amazonaws.com/${s3Object.keyName}`;
   }
 }
 

@@ -1,11 +1,6 @@
 <template>
-    <div class="container">
-        <h1>ポリシー更新</h1>
-        <div v-if="policyMast">
-            <div>席チャージ料金</div>
-            <input v-model.number="policyMast.roomChargePrice" />
-            <button @click="updatePolicy">更新</button>
-        </div>
+    <div v-if="policyMast">
+        <policy-edit v-model="policyMast" @update="updatePolicy" />
     </div>
 </template>
 
@@ -14,11 +9,13 @@ import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
 import { PolicyMast, Scalars } from "@/entity/type";
 import { getUniqueID } from "@/Util/generateUuid";
 import Methods from "@/methods/policyMethods";
-import PolicyItem from "@/components/Organisms/Policy/policyItem.vue";
+
+//components
+import PolicyEdit from "@/components/Template/Policy/edit.vue";
 
 @Component({
     layout: "hotelDefault",
-    components: { PolicyItem }
+    components: { PolicyEdit }
 })
 export default class PolicyTable extends Vue {
     public policyMast: PolicyMast | null | undefined = null;

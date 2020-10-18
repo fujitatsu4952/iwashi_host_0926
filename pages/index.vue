@@ -1,17 +1,6 @@
 <template>
     <div class="container">
-        <div>
-            <h1 class="title">iwashi200915</h1>
-            <button @click="goPlan">プラン作成</button>
-            <button @click="goRoom">ルーム作成</button>
-            <button @click="goPolicy">ポリシー作成</button>
-            <single-image :file.sync="mainKeyVisual" />
-            <button @click="uploadImageAndRegister">画像をあげる</button>
-            {{ mainKeyVisual }}
-            <div>
-                <button @click="signOut">サインアウトする</button>
-            </div>
-        </div>
+        <h1 class="title">iwashi200915</h1>
     </div>
 </template>
 

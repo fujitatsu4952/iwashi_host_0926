@@ -1,6 +1,10 @@
 <template>
     <div v-if="roomMast" @click="goRoomItem">
-        {{ roomMast.roomID }}{{ roomMast.name }}
+        ID:{{ roomMast.roomID }}NAME:{{ roomMast.name }}説明:{{
+            roomMast.description
+        }}注意書き:{{ roomMast.subDescription }}最低オーダー数:{{
+            roomMast.minOrderNum
+        }}在庫数:{{ roomMast.stockNum }}
     </div>
 </template>
 
@@ -9,7 +13,7 @@ import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
 import { RoomMast } from "@/entity/type";
 
 @Component({
-    components: {},
+    components: {}
 })
 export default class RoomItem extends Vue {
     @Prop() public roomMast!: RoomMast;
@@ -17,8 +21,8 @@ export default class RoomItem extends Vue {
         this.$router.push({
             name: "items-room-roomID",
             params: {
-                roomID: this.roomMast.roomID,
-            },
+                roomID: this.roomMast.roomID
+            }
         });
     }
 }

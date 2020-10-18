@@ -40,7 +40,12 @@
                     text="予約検索"
                     routeName="reservation"
                 ></app-side-menu-content>
-
+                <app-side-menu-content
+                    class="side-menu__content"
+                    title="IMAGE"
+                    text="画像"
+                    routeName="image"
+                ></app-side-menu-content>
                 <!-- 商品セット -->
                 <app-side-menu-summary
                     @click="showStock = !showStock"
@@ -75,7 +80,7 @@
                         class="side-menu__content"
                         title="HOTEL POLICY"
                         text="いわしポリシー"
-                        routeName="settings-hotelPolicy"
+                        routeName="settings-policy"
                     ></app-side-menu-sub-content>
                     <!-- <app-side-menu-sub-content
                         class="side-menu__content"

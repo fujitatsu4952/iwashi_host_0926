@@ -13,6 +13,7 @@ export type Query = {
   fetchPlanMasts: Array<PlanMast>;
   fetchPolicyMast: Array<PolicyMast>;
   fetchRoomMasts: Array<RoomMast>;
+  fetchS3Objects: Array<S3Object>;
 };
 
 
@@ -30,13 +31,20 @@ export type QueryfetchRoomMastsArgs = {
   roomID?: Maybe<Scalars['ID']>;
 };
 
+
+export type QueryfetchS3ObjectsArgs = {
+  keyName?: Maybe<Scalars['String']>;
+};
+
 export type Mutation = {
   addPlanMast?: Maybe<PlanMast>;
   addPolicyMast?: Maybe<PolicyMast>;
   addRoomMast?: Maybe<RoomMast>;
+  addS3Object?: Maybe<S3Object>;
   updatePlanMast?: Maybe<PlanMast>;
   updatePolicyMast?: Maybe<PolicyMast>;
   updateRoomMast?: Maybe<RoomMast>;
+  updateS3Object?: Maybe<S3Object>;
 };
 
 
@@ -55,6 +63,11 @@ export type MutationaddRoomMastArgs = {
 };
 
 
+export type MutationaddS3ObjectArgs = {
+  input?: Maybe<S3ObjectInput>;
+};
+
+
 export type MutationupdatePlanMastArgs = {
   input?: Maybe<PlanMastInput>;
 };
@@ -67,6 +80,11 @@ export type MutationupdatePolicyMastArgs = {
 
 export type MutationupdateRoomMastArgs = {
   input?: Maybe<RoomMastInput>;
+};
+
+
+export type MutationupdateS3ObjectArgs = {
+  input?: Maybe<S3ObjectInput>;
 };
 
 export type CancelPolicyMast = {
@@ -269,7 +287,7 @@ export type RoomStatusInput = {
 
 export type S3Object = {
   bucket?: Maybe<Scalars['String']>;
-  key: Scalars['String'];
+  keyName: Scalars['String'];
   region: Scalars['String'];
   mimeType?: Maybe<Scalars['String']>;
   fileName?: Maybe<Scalars['String']>;
@@ -277,7 +295,7 @@ export type S3Object = {
 
 export type S3ObjectInput = {
   bucket?: Maybe<Scalars['String']>;
-  key: Scalars['String'];
+  keyName: Scalars['String'];
   region: Scalars['String'];
   mimeType?: Maybe<Scalars['String']>;
   fileName?: Maybe<Scalars['String']>;
