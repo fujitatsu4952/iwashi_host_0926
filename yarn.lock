@@ -8324,7 +8324,7 @@ iterall@^1.2.1, iterall@^1.2.2:
 
 "iwashi_abr_1023@git+ssh://git@github.com:fujitatsu4952/iwashi_abr_1023.git":
   version "0.0.0"
-  resolved "git+ssh://git@github.com:fujitatsu4952/iwashi_abr_1023.git#0e68095f346d50caea5380f1045b08c7fe8b1b93"
+  resolved "git+ssh://git@github.com:fujitatsu4952/iwashi_abr_1023.git#c42a24fbd34a4fc79899cb295ae02fad6c8aa1f0"
 
 jest-worker@^25.4.0:
   version "25.5.0"
