@@ -8,7 +8,8 @@
     "start": "nuxt-ts start",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "yarn lint:js",
-    "codegen": "graphql-codegen --config codegen.yml"
+    "codegen": "graphql-codegen --config codegen.yml",
+    "abr": "yarn add git+ssh://git@github.com:fujitatsu4952/iwashi_abr_1023.git"
   },
   "dependencies": {
     "@aws-amplify/ui-vue": "^0.2.22",
@@ -21,8 +22,10 @@
     "dayjs": "^1.9.3",
     "graphql": "^15.3.0",
     "graphql-request": "^3.1.0",
+    "iwashi_abr_1023": "git+ssh://git@github.com:fujitatsu4952/iwashi_abr_1023.git",
     "nuxt": "^2.14.0",
-    "nuxt-property-decorator": "^2.7.2"
+    "nuxt-property-decorator": "^2.7.2",
+    "vee-validate": "^3.4.2"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "1.17.8",
