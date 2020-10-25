@@ -6,9 +6,9 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
-import { RoomMast, Scalars } from "@/entity/type";
 import { getUniqueID } from "@/Util/generateUuid";
-import Methods from "@/methods/roomMethods";
+import { RoomMast } from "iwashi_abr_1023/iwashiabr";
+import { roomInteractor } from "@/abr/index";
 //components
 import RoomEdit from "@/components/Template/Room/edit.vue";
 
@@ -16,13 +16,13 @@ import RoomEdit from "@/components/Template/Room/edit.vue";
     components: { RoomEdit }
 })
 export default class RoomTableItem extends Vue {
-    public roomMast: RoomMast | null = null;
+    public roomMast!: RoomMast;
     public async created() {
         const roomID: string = this.$route.params.roomID;
-        this.roomMast = (await Methods.fetchRoomMasts(roomID))![0];
+        this.roomMast = (await roomInteractor.fetchRoomMasts(roomID))![0];
     }
     public async updateRoom() {
-        let response = await Methods.updateRoom(this.roomMast);
+        let response = await roomInteractor.updateMast(this.roomMast);
         this.$router.push({ name: "items-room" });
     }
 }

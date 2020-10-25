@@ -9,9 +9,8 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
-import { PlanMast } from "@/entity/type";
+import { PlanMast } from "iwashi_abr_1023/iwashiabr";
 import { getUniqueID } from "@/Util/generateUuid";
-import Methods from "@/methods/planMethods";
 
 import PlanItem from "@/components/Organisms/Plan/planItem.vue";
 import AppButton from "@/components/Atoms/Button/AppButtonSave.vue";

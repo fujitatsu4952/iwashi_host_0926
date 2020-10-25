@@ -20,7 +20,7 @@
 <script lang="ts">
 import { Component, Vue, Emit, Prop, Watch } from "nuxt-property-decorator";
 import { getImage, readUploadedFileAsBase64 } from "@/Util/imageUtil";
-import { S3Object } from "@/entity/type";
+import { S3Object } from "iwashi_abr_1023/iwashiabr";
 import { hostStorageInteractor } from "@/client/amplify/storage";
 // component
 import ImageItem from "./ImageItem.vue";

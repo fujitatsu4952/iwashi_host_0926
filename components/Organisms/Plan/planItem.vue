@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
-import { PlanMast } from "@/entity/type";
+import { PlanMast } from "iwashi_abr_1023/iwashiabr";
 
 @Component({
     components: {}

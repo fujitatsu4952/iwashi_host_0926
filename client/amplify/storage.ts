@@ -1,5 +1,5 @@
 import Storage from "@aws-amplify/storage";
-import { S3Object } from "@/entity/type";
+import { S3Object } from "iwashi_abr_1023/iwashiabr";
 import { awsmobile } from "~/plugins/amplify";
 
 class HostStorageInteractor {

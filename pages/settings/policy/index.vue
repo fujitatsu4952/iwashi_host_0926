@@ -6,9 +6,9 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
-import { PolicyMast, Scalars } from "@/entity/type";
 import { getUniqueID } from "@/Util/generateUuid";
-import Methods from "@/methods/policyMethods";
+import { PolicyMast } from "iwashi_abr_1023/iwashiabr";
+import { policyInteractor } from "@/abr/index";
 
 //components
 import PolicyEdit from "@/components/Template/Policy/edit.vue";
@@ -20,10 +20,10 @@ import PolicyEdit from "@/components/Template/Policy/edit.vue";
 export default class PolicyTable extends Vue {
     public policyMast: PolicyMast | null | undefined = null;
     public async created() {
-        this.policyMast = await Methods.fetchPolicyMast(undefined);
+        this.policyMast = await policyInteractor.fetchPolicyMast(undefined);
     }
     public async updatePolicy() {
-        let response = await Methods.updatePolicy(this.policyMast!);
+        let response = await policyInteractor.updateMast(this.policyMast!);
     }
 }
 </script>

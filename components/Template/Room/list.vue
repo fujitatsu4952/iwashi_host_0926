@@ -8,9 +8,8 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
-import { RoomMast } from "@/entity/type";
+import { RoomMast } from "iwashi_abr_1023/iwashiabr";
 import { getUniqueID } from "@/Util/generateUuid";
-import Methods from "@/methods/roomMethods";
 
 import RoomItem from "@/components/Organisms/Room/roomItem.vue";
 import AppButton from "@/components/Atoms/Button/AppButtonSave.vue";

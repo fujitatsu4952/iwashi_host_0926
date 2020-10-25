@@ -9,9 +9,9 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
-import { PlanMast } from "@/entity/type";
 import { getUniqueID } from "@/Util/generateUuid";
-import Methods from "@/methods/planMethods";
+import { PlanMast } from "iwashi_abr_1023/iwashiabr";
+import { planInteractor } from "@/abr/index";
 // components
 import PlanList from "@/components/Template/Plan/list.vue";
 import AppButton from "@/components/Atoms/Button/AppButtonSave.vue";
@@ -26,7 +26,7 @@ export default class PagePlanTable extends Vue {
         this.$router.push({ name: "items-plan-new_plan" });
     }
     public async created() {
-        this.planMasts = await Methods.fetchPlanMasts(undefined);
+        this.planMasts = await planInteractor.fetchPlanMasts(undefined);
     }
 }
 </script>

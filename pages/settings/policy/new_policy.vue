@@ -13,14 +13,12 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
-import { PolicyMast } from "@/entity/type";
 import { getUniqueID } from "@/Util/generateUuid";
-import Methods from "@/methods/policyMethods";
 
 @Component({
-    components: {},
+    components: {}
 })
-export default class PlanCreate extends Vue {
+export default class PolicyCreate extends Vue {
     // public policyMast: PolicyMast | null = null;
     // public created() {
     //     this.policyMast = {

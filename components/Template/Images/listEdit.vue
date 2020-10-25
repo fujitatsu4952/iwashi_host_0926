@@ -16,9 +16,8 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
-import { S3Object } from "@/entity/type";
+import { S3Object } from "iwashi_abr_1023/iwashiabr";
 import { getUniqueID } from "@/Util/generateUuid";
-import Methods from "@/methods/planMethods";
 
 import SingleImage from "@/components/Molecules/AppImageUpload/SingleImage.vue";
 import ImageItem from "@/components/Organisms/Image/imageItem.vue";

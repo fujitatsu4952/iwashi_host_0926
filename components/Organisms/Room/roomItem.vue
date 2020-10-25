@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
-import { RoomMast } from "@/entity/type";
+import { RoomMast } from "iwashi_abr_1023/iwashiabr";
 
 @Component({
     components: {}

@@ -10,10 +10,10 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
-import { S3Object } from "@/entity/type";
 import { hostStorageInteractor } from "@/client/amplify/storage";
 import { getUniqueID } from "@/Util/generateUuid";
-import Methods from "@/methods/imageMethods";
+import { S3Object } from "iwashi_abr_1023/iwashiabr";
+import { imageInteractor } from "@/abr/index";
 // components
 import ImageList from "@/components/Template/Images/listEdit.vue";
 import AppButton from "@/components/Atoms/Button/AppButtonSave.vue";
@@ -28,7 +28,7 @@ export default class PageImageTable extends Vue {
     public newS3Object: S3Object | null = null;
     public imageMasts: S3Object[] | null | undefined = null;
     public async created() {
-        this.imageMasts = await Methods.fetchS3Objects(undefined);
+        this.imageMasts = await imageInteractor.fetchPlanMasts(undefined);
     }
     public async uploadImageAndRegister() {
         console.log("ここは作動しているのだろうか");
@@ -40,7 +40,7 @@ export default class PageImageTable extends Vue {
                     this.mainKeyVisual
                 );
                 console.log(this.imageMasts);
-                let response = await Methods.addS3Object(this.newS3Object);
+                let response = await imageInteractor.addMast(this.newS3Object);
             }
         } catch (err) {
             console.log(err);

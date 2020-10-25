@@ -1,9 +1,11 @@
 import {
-    GuestRoomInteractor,
-    GuestPolicyInteractor,
-    GuestPlanInteractor
+    HostRoomInteractor,
+    HostPolicyInteractor,
+    HostPlanInteractor,
+    HostImageInteractor
 } from 'iwashi_abr_1023/iwashiabr';
 
-export const roomInteractor = new GuestRoomInteractor();
-export const policyInteractor = new GuestPolicyInteractor();
-export const planInteractor = new GuestPlanInteractor();
+export const roomInteractor = new HostRoomInteractor();
+export const policyInteractor = new HostPolicyInteractor();
+export const planInteractor = new HostPlanInteractor();
+export const imageInteractor = new HostImageInteractor();

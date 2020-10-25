@@ -6,9 +6,9 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
-import { PlanMast } from "@/entity/type";
 import { getUniqueID } from "@/Util/generateUuid";
-import Methods from "@/methods/planMethods";
+import { PlanMast } from "iwashi_abr_1023/iwashiabr";
+import { planInteractor } from "@/abr/index";
 //components
 import PlanEdit from "@/components/Template/Plan/edit.vue";
 
@@ -17,21 +17,12 @@ import PlanEdit from "@/components/Template/Plan/edit.vue";
     components: { PlanEdit }
 })
 export default class PlanCreate extends Vue {
-    public planMast: PlanMast | null = null;
-    public created() {
-        this.planMast = {
-            planID: getUniqueID.getUniqueID(3),
-            name: "",
-            description: "",
-            subDescription: "",
-            price: 0,
-            stockNum: 0,
-            deletedAt: null,
-            inSale: null
-        };
+    public planMast!: PlanMast;
+    public async created() {
+        this.planMast = await planInteractor.getBlancMast();
     }
     public async addPlan() {
-        let response = await Methods.addPlan(this.planMast);
+        let response = await planInteractor.addMast(this.planMast);
         this.$router.push({ name: "items-plan" });
     }
 }

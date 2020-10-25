@@ -28,9 +28,8 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
-import { PolicyMast, Scalars } from "@/entity/type";
+import { PolicyMast, Scalars } from "iwashi_abr_1023/iwashiabr";
 import { getUniqueID } from "@/Util/generateUuid";
-import Methods from "@/methods/policyMethods";
 // components
 import EditTemplate from "@/components/Organisms/Common/Templates/EditTemplate.vue";
 import LocalMenuTemplate from "@/components/Organisms/LocalMenu/LocalMenuTemplate.vue";

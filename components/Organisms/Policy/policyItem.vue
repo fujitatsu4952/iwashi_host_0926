@@ -11,10 +11,10 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
-import { PolicyMast } from "@/entity/type";
+import { PolicyMast } from "iwashi_abr_1023/iwashiabr";
 
 @Component({
-    components: {},
+    components: {}
 })
 export default class RoomItem extends Vue {
     @Prop() public policyMast!: PolicyMast;

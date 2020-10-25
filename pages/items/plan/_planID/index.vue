@@ -6,9 +6,9 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
-import { PlanMast, Scalars } from "@/entity/type";
 import { getUniqueID } from "@/Util/generateUuid";
-import Methods from "@/methods/planMethods";
+import { PlanMast } from "iwashi_abr_1023/iwashiabr";
+import { planInteractor } from "@/abr/index";
 
 //components
 import PlanEdit from "@/components/Template/Plan/edit.vue";
@@ -20,13 +20,13 @@ import PlanEdit from "@/components/Template/Plan/edit.vue";
     }
 })
 export default class PlanTable extends Vue {
-    public planMast: PlanMast | null = null;
+    public planMast!: PlanMast;
     public async created() {
         const planID: string = this.$route.params.planID;
-        this.planMast = (await Methods.fetchPlanMasts(planID))![0];
+        this.planMast = (await planInteractor.fetchPlanMasts(planID))![0];
     }
     public async updatePlan() {
-        let response = await Methods.updatePlan(this.planMast);
+        let response = await planInteractor.updateMast(this.planMast);
         this.$router.push({ name: "items-plan" });
     }
 }

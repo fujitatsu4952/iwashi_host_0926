@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { Component, Vue, Watch, Prop, Emit } from "nuxt-property-decorator";
-import { S3Object } from "@/entity/type";
+import { S3Object } from "iwashi_abr_1023/iwashiabr";
 import { hostStorageInteractor } from "@/client/amplify/storage";
 
 @Component({
