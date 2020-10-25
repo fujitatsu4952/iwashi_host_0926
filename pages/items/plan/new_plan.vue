@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="planMast">
         <plan-edit v-model="planMast" @updatePlan="addPlan" />
     </div>
 </template>
@@ -17,13 +17,17 @@ import PlanEdit from "@/components/Template/Plan/edit.vue";
     components: { PlanEdit }
 })
 export default class PlanCreate extends Vue {
-    public planMast!: PlanMast;
+    public planMast: PlanMast | null = null;
     public async created() {
+        console.log("inin");
         this.planMast = await planInteractor.getBlancMast();
+        console.log(this.planMast);
     }
     public async addPlan() {
-        let response = await planInteractor.addMast(this.planMast);
-        this.$router.push({ name: "items-plan" });
+        if (this.planMast) {
+            let response = await planInteractor.addMast(this.planMast);
+            this.$router.push({ name: "items-plan" });
+        }
     }
 }
 </script>

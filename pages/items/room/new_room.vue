@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="roomMast">
         <room-edit v-model="roomMast" @updateRoom="addRoom" />
     </div>
 </template>
@@ -17,7 +17,7 @@ import RoomEdit from "@/components/Template/Room/edit.vue";
     components: { RoomEdit }
 })
 export default class RoomCreate extends Vue {
-    public roomMast!: RoomMast;
+    public roomMast: RoomMast | null = null;
     public async created() {
         this.roomMast = await roomInteractor.getBlancMast();
     }

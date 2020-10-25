@@ -26,7 +26,9 @@ export default class PagePlanTable extends Vue {
         this.$router.push({ name: "items-plan-new_plan" });
     }
     public async created() {
-        this.planMasts = await planInteractor.fetchPlanMasts(undefined);
+        this.planMasts = (
+            await planInteractor.fetchPlanMasts(undefined)
+        ).data?.fetchPlanMasts;
     }
 }
 </script>

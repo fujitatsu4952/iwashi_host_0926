@@ -1,7 +1,7 @@
 import Auth from "@aws-amplify/auth";
 
 import { awsmobile } from "@/plugins/amplify";
-import { Scalars } from "~/api/mutation";
+import { Scalars } from "iwashi_abr_1023/iwashiabr";
 Auth.configure(awsmobile.Auth);
 
 class HostUserAuthInteractor {

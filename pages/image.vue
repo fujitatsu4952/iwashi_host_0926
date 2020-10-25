@@ -28,7 +28,9 @@ export default class PageImageTable extends Vue {
     public newS3Object: S3Object | null = null;
     public imageMasts: S3Object[] | null | undefined = null;
     public async created() {
-        this.imageMasts = await imageInteractor.fetchPlanMasts(undefined);
+        this.imageMasts = (
+            await imageInteractor.fetchImageMasts(undefined)
+        ).data.fetchS3Objects;
     }
     public async uploadImageAndRegister() {
         console.log("ここは作動しているのだろうか");
